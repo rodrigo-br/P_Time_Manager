@@ -6,7 +6,8 @@ file = 'Projetos.xlsx'
 projetos = []
 tempo = []
 
-print(pd.read_excel(file, index_col=0))
+if os.path.exists(file):
+    print(pd.read_excel(file, index_col=0))
 
 while True:
     projeto = input("Digite o nome de um novo projeto (deixe em branco para encerrar)")
@@ -18,7 +19,7 @@ while True:
     dataframe = pd.DataFrame(ds)
 
 if not os.path.exists(file):
-    dataframe.to_excel(file, index_col=0)
+    dataframe.to_excel(file)
 
 elif projetos:
     data_antigo = pd.read_excel(file, index_col=0)
