@@ -9,10 +9,11 @@ def open_project(dataset):
     if index > dataset.shape[0]:
         raise "Invalid index"
     path = dataset['path'].iloc[index]
+    projeto = dataset['projetos'].iloc[index]
     if path == 'empty':
         os.system(cmd)
-        return '"Code.exe"'
+        return ('"Code.exe"', projeto)
     else:
         cmd = 'pycharm64.exe ' + path + '\\main.py'
         os.system(cmd)
-        return '"pycharm64.exe"'
+        return ('"pycharm64.exe"', projeto)
